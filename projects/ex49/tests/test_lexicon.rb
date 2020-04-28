@@ -1,4 +1,4 @@
-require 'ex48/lexicon.rb'
+require 'ex49/lexicon.rb'
 require 'test/unit'
 
 class TestLexicon < Test::Unit::TestCase
@@ -19,9 +19,8 @@ class TestLexicon < Test::Unit::TestCase
             ['verb', 'eat']])
   end
 
-
   def test_stops()
-    assert_equal(Lexicon.scan("the"), [['stop'], 'the'])
+    assert_equal(Lexicon.scan("the"), [['stop', 'the']])
     result = Lexicon.scan("the in of")
     assert_equal(result, [['stop', 'the'],
           ['stop', 'in'],
@@ -41,15 +40,6 @@ class TestLexicon < Test::Unit::TestCase
     result = Lexicon.scan("3 91234")
     assert_equal(result, [['number', 3],
            ['number', 91234]])
-  end
-
-
-  def test_errors()
-    assert_equal(Lexicon.scan("ASDFADFASDF"), [['error', 'ASDFADFASDF']])
-    result = Lexicon.scan("bear IAS princess")
-    assert_equal(result, [['noun', 'bear'],
-           ['error', 'IAS'],
-           ['noun', 'princess']])
   end
 
 end

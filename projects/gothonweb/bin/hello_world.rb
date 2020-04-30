@@ -11,5 +11,6 @@ end
 
 get '/hello/' do
   greeting = params[:greeting] || "Hi There"
-  erb :index, :locals => {'greeting' => greeting}
+  name = params[:name] || "John Doe"
+  erb :index, :locals => {'greeting' => greeting, 'name'=> name}
 end

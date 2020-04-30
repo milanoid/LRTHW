@@ -10,19 +10,8 @@ class MyAppTest < Test::Unit::TestCase
   end
 
   def test_my_default
-    get '/'
-    assert_equal 'Hello world', last_response.body
-  end
-
-  def test_hello_form
-    get '/hello/'
+    get '/game'
     assert last_response.ok?
-    assert last_response.body.include?('A Greeting')
-  end
-
-  def test_hello_form_post
-    post '/hello/', params={:name => 'Frank', :greeting => "Hi"}
-    assert last_response.ok?
-    assert last_response.body.include?('I just wanted to say')
+    assert last_response.body.include?('You Died!')
   end
 end
